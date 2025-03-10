@@ -13,8 +13,15 @@ return new class extends Migration
     {
         Schema::create('parkings', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('places');
             $table->timestamps();
+
+            $table->unisgnedInteger('utilisateur_id');
+            $table->foreign('utilisateur_id')->references('id')->on('utilisateurs')->onDelete('cascade');
         });
+
+
     }
 
     /**

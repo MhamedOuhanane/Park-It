@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
+
+            $table->unisgnedInteger('utilisateur_id');
+            $table->unisgnedInteger('parking_id');
+            $table->foreign('utilisateur_id')->references('id')->on('utilisateurs')->onDelete('cascade');
+            $table->foreign('parking_id')->references('id')->on('parkings')->onDelete('cascade');
         });
     }
 
