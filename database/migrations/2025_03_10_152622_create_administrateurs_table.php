@@ -18,7 +18,7 @@ return new class extends Migration
         // });
 
         DB::statement('CREATE TABLE administrateurs() INHERITS(users)');
-        DB::statement('UPDATE TABLE administrateurs CONSTRAINT administrateurs_id_unique PRIMARY KEY (id)');
+        DB::statement('ALTER TABLE administrateurs ADD CONSTRAINT administrateurs_id_unique PRIMARY KEY (id)');
     }
 
     /**

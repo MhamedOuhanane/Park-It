@@ -16,9 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->integer('places');
             $table->timestamps();
-
-            $table->unisgnedInteger('utilisateur_id');
-            $table->foreign('utilisateur_id')->references('id')->on('utilisateurs')->onDelete('cascade');
         });
 
 

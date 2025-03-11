@@ -18,7 +18,7 @@ return new class extends Migration
         // });
 
         DB::statement('CREATE TABLE utilisateurs() INHERITS(users)');
-        DB::statement('UPDATE TABLE utilisateurs CONSTRAINT utilisateurs_id_unique PRIMARY KEY (id)');
+        DB::statement('ALTER TABLE utilisateurs ADD CONSTRAINT utilisateurs_id_unique PRIMARY KEY (id)');
     }
 
     /**
