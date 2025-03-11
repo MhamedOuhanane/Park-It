@@ -28,7 +28,9 @@ class RegisteredUserController extends Controller
         $token = $user->createToken($request->email);
 
         return response()->json([
-            'message' => 'regester valide',
+            'message' => 'Create compte avec succes',
+            'user' => $user,
+            'token' => $token,
         ]);
     }
 }

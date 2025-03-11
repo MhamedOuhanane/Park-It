@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginUserRequest extends FormRequest
@@ -11,7 +12,7 @@ class LoginUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,8 @@ class LoginUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "email" => ['required', 'string', 'email', 'exists:users'],
+            "password" => ['required'],
         ];
     }
 }
