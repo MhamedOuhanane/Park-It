@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Parking;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreParkingRequest;
+use App\Http\Requests\UpdateParkingRequest;
 
 class ParkingController extends Controller
 {
@@ -18,7 +19,7 @@ class ParkingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreParkingRequest $request)
     {
         //
     }
@@ -34,7 +35,7 @@ class ParkingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Parking $parking)
+    public function update(UpdateParkingRequest $request, Parking $parking)
     {
         //
     }

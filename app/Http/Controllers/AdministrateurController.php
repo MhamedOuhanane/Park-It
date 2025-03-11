@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Administrateur;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreAdministrateurRequest;
+use App\Http\Requests\UpdateAdministrateurRequest;
 
-class AdministrateurController extends Controller
+class AdministrateurController
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +19,7 @@ class AdministrateurController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAdministrateurRequest $request)
     {
         //
     }
@@ -34,7 +35,7 @@ class AdministrateurController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Administrateur $administrateur)
+    public function update(UpdateAdministrateurRequest $request, Administrateur $administrateur)
     {
         //
     }
