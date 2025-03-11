@@ -36,31 +36,7 @@ class LoginController extends Controller
         return [
             'message' => 'Vous vous êtes connecté avec succès à votre compte.',
             'user' => $user,
-            'token' => $token,
+            'token' => $token->plainTextToken,
         ];
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(User $user)
-    {
-        
     }
 }
