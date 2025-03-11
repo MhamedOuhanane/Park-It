@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Administrateur;
-use App\Http\Requests\StoreAdministrateurRequest;
-use App\Http\Requests\UpdateAdministrateurRequest;
+use App\Models\Role;
+use App\Http\Requests\StoreRoleRequest;
+use App\Http\Requests\UpdateRoleRequest;
 
-class AdministrateurController
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Administrateur::all();
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAdministrateurRequest $request)
+    public function store(StoreRoleRequest $request)
     {
         //
     }
@@ -27,7 +27,7 @@ class AdministrateurController
     /**
      * Display the specified resource.
      */
-    public function show(Administrateur $administrateur)
+    public function show(Role $role)
     {
         //
     }
@@ -35,7 +35,7 @@ class AdministrateurController
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAdministrateurRequest $request, Administrateur $administrateur)
+    public function update(UpdateRoleRequest $request, Role $role)
     {
         //
     }
@@ -43,7 +43,7 @@ class AdministrateurController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Administrateur $administrateur)
+    public function destroy(Role $role)
     {
         //
     }
