@@ -19,14 +19,7 @@ class ReservationController extends Controller
     {
         $user = Utilisateur::find(Auth::id());
 
-        $reservations = $user->reservations;
-
-        // foreach ($reservations as $reservation) {
-        //     if ($reservation->start_date ) {
-        //         # code...
-        //     }
-        // }
-        
+        $reservations = $user->reservations;        
         
         return  response()->json([
             'reservation' => $reservations,
@@ -44,8 +37,9 @@ class ReservationController extends Controller
         $user = Utilisateur::find(Auth::id());
         
         $parking = Parking::find($request->parking_id);
+        $status = $parking->reservations()->where('status', '!=', 'Termine')->count() >= $parking->places;
 
-        if ($parking->reservations()->count()) {
+        if ($status) {
             return  response()->json([
                     'message' => 'Le parking est plein.',
                 ]);
