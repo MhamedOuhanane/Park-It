@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
+use App\Models\Parking;
 use App\Models\Utilisateur;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,9 +29,15 @@ class ReservationController extends Controller
 
         $user = Utilisateur::find(Auth::id());
         
-        $parkingId = $request->parking_id;
+        $parking = Parking::find($request->parking_id);
+
+        if ($parking->reservations()->count()) {
+            return  response()->json([
+                    'message' => 'Le parking est plein.',
+                ]);
+        }
         
-        $user->parkings()->attach($parkingId, [
+        $user->parkings()->attach($parking->id, [
             'start_date' => $start_date,
             'end_date' => $end_date,
             'created_at' => now(),
