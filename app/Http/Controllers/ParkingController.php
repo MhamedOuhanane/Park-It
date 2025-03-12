@@ -71,7 +71,15 @@ class ParkingController extends Controller
      */
     public function update(UpdateParkingRequest $request, Parking $parking)
     {
-        //
+        $parking->update([
+            'name' => $request->name,
+            'places' => $request->places,
+        ]);
+
+        return response()->json([
+            'message' => 'Le parking "' . $parking->name . '" a été modifié avec succès.',
+            'parking' => $parking,
+        ], 200);
     }
 
     /**
