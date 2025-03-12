@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
+use App\Models\Utilisateur;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -21,7 +23,23 @@ class ReservationController extends Controller
      */
     public function store(StoreReservationRequest $request)
     {
-        //
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        $user = Utilisateur::find(Auth::id());
+        
+        $parkingId = $request->parking_id;
+        
+        $user->parkings()->attach($parkingId, [
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+            'created_at' => now(),
+            'end_date' => now(),
+        ]);
+
+        return response()->json([
+            'message' => 'La reservation de plase est complet',
+        ], 200);
     }
 
     /**
@@ -29,7 +47,7 @@ class ReservationController extends Controller
      */
     public function show(Reservation $reservation)
     {
-        //
+        
     }
 
     /**

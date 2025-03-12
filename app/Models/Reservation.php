@@ -15,5 +15,15 @@ class Reservation extends Model
         'end_date',
         'created_at'
     ];
-    
+
+    public function utilisateur()
+    {
+        return $this->belongsTo(Utilisateur::class);
+    }
+
+    public function parkings()
+    {
+        return $this->belongsTo(Parking::class);
+    }
+
 }

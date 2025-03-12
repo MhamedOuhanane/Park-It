@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Administrateur>
  */
-class AdministrateurFactory extends Factory
+class AdministrateurFactory extends UserFactory 
 {
     /**
      * Define the model's default state.
@@ -16,8 +16,9 @@ class AdministrateurFactory extends Factory
      */
     public function definition(): array
     {
+        parent::definition();
         return [
-            //
+            'role_id'=> 1,
         ];
     }
 }

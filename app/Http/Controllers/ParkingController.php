@@ -39,7 +39,6 @@ class ParkingController extends Controller
      */
     public function store(StoreParkingRequest $request)
     {
-        //
     }
 
     /**

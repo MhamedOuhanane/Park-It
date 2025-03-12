@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Utilisateur>
  */
-class UtilisateurFactory extends Factory
+class UtilisateurFactory extends UserFactory
 {
     /**
      * Define the model's default state.
@@ -16,8 +16,9 @@ class UtilisateurFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            //
-        ];
+        return array_merge(parent::definition(), [
+            'role_id' => 2, 
+        ]);
+
     }
 }

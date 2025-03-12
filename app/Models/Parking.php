@@ -19,4 +19,9 @@ class Parking extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public function utilisateur()
+    {
+        return $this->belongsToMany(Utilisateur::class);
+    }
 }
