@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Parking;
+use App\Models\Reservation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUtilisateurRequest extends FormRequest
@@ -11,7 +13,7 @@ class UpdateUtilisateurRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,6 +23,7 @@ class UpdateUtilisateurRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             //
         ];

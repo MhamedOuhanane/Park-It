@@ -15,8 +15,13 @@ class Parking extends Model
         'places'
     ];
     
-    // public function reservations()
-    // {
-    //     return $this->hasMany(Reservation::class);
-    // }
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function utilisateur()
+    {
+        return $this->belongsToMany(Utilisateur::class);
+    }
 }
