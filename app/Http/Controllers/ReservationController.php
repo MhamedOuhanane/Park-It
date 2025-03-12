@@ -88,6 +88,23 @@ class ReservationController extends Controller
      */
     public function destroy(Reservation $reservation)
     {
-        //
+        if (!$reservation) {
+            return response()->json([
+                'message' => 'Réservation non trouvée.',
+            ], 404);
+        }
+        
+        $reservation->delete();
+        
+        // if (Auth::user()->role->name == 'admin') {
+
+            return response()->json([
+                'message' => 'La reservation est annuler avec succès.',
+            ], 200);
+
+        // } else {
+        //     # code...
+        // }
+        
     }
 }
