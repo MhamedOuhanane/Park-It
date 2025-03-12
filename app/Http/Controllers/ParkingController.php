@@ -79,6 +79,21 @@ class ParkingController extends Controller
      */
     public function destroy(Parking $parking)
     {
-        //
+        if ($parking->deleted_at) {
+            $parking->deleted_at = null;
+            $message = 'Le parking "' . $parking->name . '" a été restauré avec succès.';
+        } else {
+            $parking->deleted_at = now();
+            $message = 'Le parking "' . $parking->name . '" a été supprimé avec succès.';
+        }
+        
+        
+
+        $parking->save();
+
+        return response()->json([
+            'message' => $message,
+            'parking' => $parking,
+        ], 200);
     }
 }
