@@ -17,7 +17,20 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        $user = Utilisateur::find(Auth::id());
+
+        $reservations = $user->reservations;
+
+        // foreach ($reservations as $reservation) {
+        //     if ($reservation->start_date ) {
+        //         # code...
+        //     }
+        // }
+        
+        
+        return  response()->json([
+            'reservation' => $reservations,
+        ], 200);
     }
 
     /**
@@ -93,7 +106,7 @@ class ReservationController extends Controller
                 'message' => 'Réservation non trouvée.',
             ], 404);
         }
-        
+
         $reservation->delete();
         
         // if (Auth::user()->role->name == 'admin') {
