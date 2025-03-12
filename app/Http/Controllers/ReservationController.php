@@ -7,6 +7,7 @@ use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
 use App\Models\Parking;
 use App\Models\Utilisateur;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
@@ -62,7 +63,25 @@ class ReservationController extends Controller
      */
     public function update(UpdateReservationRequest $request, Reservation $reservation)
     {
-        //
+        $start_date = Carbon::parse($reservation->start_date);
+
+        if ($start_date->addHour() <= now()) {
+            return response()->json([
+                    'message' => "Vous n'avez pas la permission de modifier votre réservation.",
+            ], 403);
+        }
+        
+        return $request->start_date;
+        
+        $reservation->update([
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,  
+            'updated_at' => now(), 
+        ]);
+    
+        return response()->json([
+            'message' => 'Votre réservation a été mise à jour avec succès.',
+        ], 200);
     }
 
     /**
