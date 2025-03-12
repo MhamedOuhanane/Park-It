@@ -39,6 +39,23 @@ class ParkingController extends Controller
      */
     public function store(StoreParkingRequest $request)
     {
+        $parking = Parking::create([
+            'name' => $request->name,
+            'places' => $request->places,
+        ]);
+
+        if ($parking) {
+            return response()->json([
+                'message' => 'Le parking est create avec succès!!!',
+                'parkin' => $parking,
+            ], 200);
+
+        } else {
+            return response()->json([
+                'message' => 'Échec de la création du parking.',
+            ], 500);
+        }
+        
     }
 
     /**
