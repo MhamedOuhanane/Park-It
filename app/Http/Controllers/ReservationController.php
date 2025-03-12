@@ -64,15 +64,14 @@ class ReservationController extends Controller
     public function update(UpdateReservationRequest $request, Reservation $reservation)
     {
         $start_date = Carbon::parse($reservation->start_date);
-
-        if ($start_date->addHour() <= now()) {
+        
+        if ($start_date->subHour() <= now()) {
             return response()->json([
-                    'message' => "Vous n'avez pas la permission de modifier votre réservation.",
+                'message' => "Vous n'avez pas la permission de modifier votre réservation.",
             ], 403);
         }
         
-        return $request->start_date;
-        
+
         $reservation->update([
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,  

@@ -22,7 +22,8 @@ class UpdateReservationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'start_date' => ['required', 'date', 'after:' . now()->addHour()],
+            'end_date' => ['required', 'date', 'after:start_date'],
         ];
     }
 }

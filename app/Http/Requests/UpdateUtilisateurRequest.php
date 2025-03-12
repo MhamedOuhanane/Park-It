@@ -25,8 +25,7 @@ class UpdateUtilisateurRequest extends FormRequest
     {
 
         return [
-            'start_date' => ['required', 'date', 'after:' . now()->addHour()],
-            'end_date' => ['required', 'date', 'after:start_date'],
+            //
         ];
     }
 }
