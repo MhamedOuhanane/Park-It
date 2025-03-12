@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\ReservationController;
 use App\Models\Administrateur;
@@ -18,6 +19,7 @@ Route::apiResource('login', LoginController::class);
 Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('logout', LogoutController::class);
 
+    Route::apiResource('dashboard', DashboardController::class);
     Route::apiResource('parking', ParkingController::class);
     Route::apiResource('reservation', ReservationController::class);
 });
