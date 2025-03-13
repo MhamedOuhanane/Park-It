@@ -6,6 +6,7 @@ use App\Models\Parking;
 use App\Models\Reservation;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
