@@ -1,66 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Park'It - API REST pour la gestion des parkings
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Contexte du projet
 
-## About Laravel
+L'objectif principal de ce projet est de développer une API REST pour la gestion des parkings. Cette API permettra aux utilisateurs de rechercher des places disponibles, de réserver une place et de suivre l'état de leurs réservations. Chaque parking sera caractérisé par son nombre total de places, permettant une gestion précise de la disponibilité.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## User Stories
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🔒 Authentification utilisateur
+En tant qu'utilisateur, je souhaite pouvoir m'authentifier sur l'API à l'aide de Laravel Sanctum.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🚗 Recherche de place de parking
+En tant qu'utilisateur, je souhaite pouvoir rechercher une place de parking disponible dans une zone géographique spécifique, avec une indication en temps réel de la disponibilité et du nombre total de places pour chaque parking.
 
-## Learning Laravel
+### 📅 Réservation de place de parking
+En tant qu'utilisateur, je veux pouvoir réserver une place de parking pour une période spécifique, en précisant l'heure d'arrivée et l'heure de départ.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🔄 Modification et annulation de réservation
+En tant qu'utilisateur, je souhaite pouvoir modifier mes réservations, y compris l'heure d'arrivée, l'heure de départ, ou annuler la réservation si nécessaire.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### ❌ Annulation de réservation
+En tant qu'utilisateur, je souhaite avoir la possibilité d'annuler ma réservation en cas de changement de plans.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 📊 Consultation des réservations
+En tant qu'utilisateur, je souhaite pouvoir consulter mes réservations passées et actuelles pour suivre l'historique de mes parkings réservés.
 
-## Laravel Sponsors
+### 🔒 Gestion des parkings par l'administrateur
+En tant qu'administrateur, je souhaite pouvoir ajouter, modifier ou supprimer des parkings dans le système. Pour chaque parking, je dois pouvoir définir et mettre à jour le nombre total de places disponibles.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🔍 Statistiques des parkings
+En tant qu'administrateur, je souhaite visualiser les statistiques liées aux parkings, comme le nombre de places disponibles, le nombre de réservations passées, etc.
 
-### Premium Partners
+### 🧪 Tests unitaires
+En tant que développeur, je souhaite que des tests unitaires soient réalisés pour chaque fonctionnalité de l'API.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 📝 Tests Postman
+En tant que développeur, je veux que des tests sur Postman soient effectués pour valider le bon fonctionnement de l'API dans différents scénarios d'utilisation.
 
-## Contributing
+### 📄 Documentation API
+En tant que développeur, je souhaite une documentation détaillée de l'API, avec une description claire de chaque endpoint, pour simplifier l'intégration par d'autres développeurs. Cette documentation sera créée à l'aide d'outils comme Postman, Swagger ou d'autres outils similaires.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Fonctionnalités principales
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 1. **Authentification des utilisateurs**
+- Authentification via Laravel Sanctum pour sécuriser l'accès à l'API.
+  
+### 2. **Gestion des parkings**
+- Ajout, modification, suppression des parkings par un administrateur.
+- Gestion du nombre de places disponibles pour chaque parking.
 
-## Security Vulnerabilities
+### 3. **Réservation de places de parking**
+- Les utilisateurs peuvent rechercher des places disponibles par zone géographique.
+- Possibilité de réserver une place pour une période donnée avec la gestion des horaires d'arrivée et de départ.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. **Historique des réservations**
+- Les utilisateurs peuvent consulter l'historique de leurs réservations passées et actuelles.
 
-## License
+### 5. **Modification et annulation des réservations**
+- Les utilisateurs peuvent modifier ou annuler leurs réservations selon leurs besoins.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Structure de l'API
+
+Voici une vue d'ensemble des endpoints principaux de l'API :
+
+### 1. **POST /api/register**
+- Enregistrement d'un nouvel utilisateur.
+
+### 2. **POST /api/login**
+- Authentification de l'utilisateur et génération d'un token.
+
+### 3. **DELETE /api/logout**
+- déconnexion de l'utilisateur et supprimer ses tokens.
+
+### 4. **GET /api/parkings**
+- Liste des parkings disponibles avec le nombre total de places et la disponibilité en temps réel.
+
+### 5. **POST /api/reservations**
+- Création d'une nouvelle réservation de parking.
+
+### 6. **PUT /api/reservations/{reservations}**
+- Modification d'une réservation existante.
+
+### 7. **DELETE /api/reservations/{reservation}**
+- Annulation d'une réservation.
+
+### 8. **Delete /api/parkings/{parking}**
+- Restauration d'un parking supprimé.
+
+### 9. **GET /api/dashboard**
+- Statistiques globales sur les parkings et les réservations.
+
+---
+
+## Technologies utilisées
+
+- **Backend** : Laravel 12
+- **Base de données** : PostgreSQL
+- **Authentification** : Laravel Sanctum
+- **Tests** : PHPUnit, Postman
+- **Documentation** : Postman
+
+---
+
+## Livrables pour le projet Park'It
+
+Date limite de soumission : **14/03/2025 à Minuit**
+
+### 1. Lien vers le repository GitHub
+
+[https://github.com/exemple/Park-It.git](https://github.com/MhamedOuhanane/Park-It.git)
+
+Ce lien contient le code source complet du projet, incluant tous les fichiers nécessaires à son fonctionnement.
+
+### 2. Lien vers le plan de projet (JIRA)
+
+[https://jira](https://mhamde.atlassian.net/jira/software/projects/PI/boards/81?atlOrigin=eyJpIjoiMWQxMjYxZmNkNDMyNGFiODllYTJiOGQ3NjIwNTA4NzgiLCJwIjoiaiJ9)
+
+Ce lien contient la planification détaillée du projet, y compris les tâches et les jalons.
