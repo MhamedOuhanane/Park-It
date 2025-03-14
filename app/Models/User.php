@@ -30,6 +30,16 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function isAdmin()
+    {
+        return $this->role->name == 'admin';
+    }
+
+    public function isClient()
+    {
+        return $this->role->name == 'utilisateur';
+    }
+
     // public function reservations()
     // {
     //     return $this->hasMany(Reservation::class);

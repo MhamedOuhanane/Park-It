@@ -34,12 +34,16 @@ class ReservationController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
+        // return [$start_date, $end_date];
+
         $user = Utilisateur::find(Auth::id());
         
         $parking = Parking::find($request->parking_id);
-        $status = $parking->reservations()->where('status', '!=', 'Termine')->count() >= $parking->places;
-
-        if ($status) {
+        $status = $parking->reservations()->where('status', '!=', 'Termine')
+                            ->where('end_date', '>', $start_date)
+                            ->count();
+        
+        if ($status >= $parking->places) {
             return  response()->json([
                     'message' => 'Le parking est plein.',
                 ]);
@@ -49,7 +53,7 @@ class ReservationController extends Controller
             'start_date' => $start_date,
             'end_date' => $end_date,
             'created_at' => now(),
-            'end_date' => now(),
+            'updated_at' => now(),
         ]);
 
         return response()->json([

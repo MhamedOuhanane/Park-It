@@ -22,7 +22,8 @@ class UpdateParkingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:255', /*'unique:parkings,name,' . $this->route('parking'),*/],
+            'places' => ['required', 'numeric', 'max:50'],
         ];
     }
 }
