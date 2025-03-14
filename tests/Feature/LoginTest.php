@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Models\Utilisateur;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
@@ -15,13 +16,15 @@ class LoginTest extends TestCase
      */
     public function test_login()
     {
-        $user = User::factory()->create([
-            'email' => 'login@example.com',
-            'password' => Hash::make('ploginlogin'),
+        $user = Utilisateur::factory()->create([
+            'name' => 'login',
+            'email' => 'login@gmail.com',
+            'password' => Hash::make('loginlogin'),
+            'role_id' => 2,
         ]);
 
         $response = $this->postJson('/api/login', [
-            'email' => 'logint@example.com',
+            'email' => 'logint@gmail.com',
             'password' => 'loginlogin',
         ]);
 
@@ -31,13 +34,15 @@ class LoginTest extends TestCase
 
     public function test_password()
     {
-        $user = User::factory()->create([
-            'email' => 'password@example.com',
+        $user = Utilisateur::factory()->create([
+            'name' => 'password',
+            'email' => 'password@gmail.com',
             'password' => Hash::make('passwordpassword'),
+            'role_id' => 2,
         ]);
 
         $response = $this->postJson('/api/login', [
-            'email' => 'password@example.com',
+            'email' => 'password@gmail.com',
             'password' => 'wrongpassword',
         ]);
 
@@ -48,7 +53,7 @@ class LoginTest extends TestCase
     public function test_existence()
     {
         $response = $this->postJson('/api/login', [
-            'email' => 'nonexistent@example.com',
+            'email' => 'nonexistent@gmail.com',
             'password' => 'passwordpassword',
         ]);
 

@@ -15,7 +15,7 @@ class RegisterTest extends TestCase
     {
         $userData = [
             'name' => 'Mohammed',
-            'email' => 'Mohammed@example.com',
+            'email' => 'Mohammed@gmail.com',
             'password' => 'mohammedmohammed',
             'password_confirmation' => 'mohammedmohammed',
             'role_id' => '2',
