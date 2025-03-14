@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisteredUserRequest;
+use App\Models\Administrateur;
 use App\Models\User;
 use App\Models\Utilisateur;
 use Illuminate\Http\Request;
@@ -31,6 +32,6 @@ class RegisteredUserController extends Controller
             'message' => 'Create compte avec succes',
             'user' => $user,
             'token' => $token->plainTextToken,
-        ]);
+        ], 200);
     }
 }

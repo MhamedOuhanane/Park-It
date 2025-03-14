@@ -18,7 +18,7 @@ Route::middleware('guest')->group(function() {
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('logout', LogoutController::class);
-    Route::apiResource('parking', ParkingController::class);
+    Route::apiResource('parkings', ParkingController::class);
     
     Route::middleware('role:utilisateur')->group(function() {
         Route::apiResource('reservation', ReservationController::class);

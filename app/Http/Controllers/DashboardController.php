@@ -33,7 +33,7 @@ class DashboardController extends Controller
             'porsentageRese' => $porsentageRese,
         ];
         
-        return response()->json($statistiques);
+        return response()->json($statistiques, 200);
     }
 
     /**

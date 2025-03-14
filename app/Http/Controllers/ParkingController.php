@@ -31,7 +31,7 @@ class ParkingController extends Controller
         return response()->json([
             'parkings' => $parkings,
             'search' => $search,
-        ]);
+        ], 200);
     }
 
     /**
@@ -48,12 +48,12 @@ class ParkingController extends Controller
             return response()->json([
                 'message' => 'Le parking est create avec succès!!!',
                 'parkin' => $parking,
-            ], 200);
+            ], 201);
 
         } else {
             return response()->json([
                 'message' => 'Échec de la création du parking.',
-            ], 500);
+            ], 400);
         }
         
     }
@@ -71,6 +71,12 @@ class ParkingController extends Controller
      */
     public function update(UpdateParkingRequest $request, Parking $parking)
     {
+        if (!$parking) {
+            return response()->json([
+                'message' => 'Le parking n\'existe pas.',
+            ], 404);
+        }
+
         $parking->update([
             'name' => $request->name,
             'places' => $request->places,
@@ -87,7 +93,11 @@ class ParkingController extends Controller
      */
     public function destroy(Parking $parking)
     {
-        if ($parking->deleted_at) {
+        if (!$parking) {
+            return response()->json([
+                'message' => 'Le parking n\'existe pas.',
+            ], 404);
+        } elseif ($parking->deleted_at) {
             $parking->deleted_at = null;
             $message = 'Le parking "' . $parking->name . '" a été restauré avec succès.';
         } else {
