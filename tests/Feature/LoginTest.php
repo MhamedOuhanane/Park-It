@@ -11,17 +11,18 @@ use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      */
     public function test_login()
     {
-        $user = Utilisateur::factory()->create([
-            'name' => 'login',
-            'email' => 'login@gmail.com',
-            'password' => Hash::make('loginlogin'),
-            'role_id' => 2,
-        ]);
+            $user = Utilisateur::factory()->create([
+                'name' => 'login',
+                'email' => 'login@gmail.com',
+                'password' => Hash::make('loginlogin'),
+                'role_id' => 2,
+            ]);
 
         $response = $this->postJson('/api/login', [
             'email' => 'logint@gmail.com',

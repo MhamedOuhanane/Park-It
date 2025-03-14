@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class ReservationTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      */
