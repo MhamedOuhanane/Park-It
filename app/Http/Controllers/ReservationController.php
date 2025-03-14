@@ -46,7 +46,7 @@ class ReservationController extends Controller
         if ($status >= $parking->places) {
             return  response()->json([
                     'message' => 'Le parking est plein.',
-                ]);
+                ], 422);
         }
         
         $user->parkings()->attach($parking->id, [
@@ -58,7 +58,7 @@ class ReservationController extends Controller
 
         return response()->json([
             'message' => 'La reservation de plase est complet',
-        ], 200);
+        ], 201);
     }
 
     /**
@@ -74,24 +74,26 @@ class ReservationController extends Controller
      */
     public function update(UpdateReservationRequest $request, Reservation $reservation)
     {
-        $start_date = Carbon::parse($reservation->start_date);
         
-        if ($start_date->subHour() <= now()) {
-            return response()->json([
-                'message' => "Vous n'avez pas la permission de modifier votre réservation.",
-            ], 403);
-        }
+            $start_date = Carbon::parse($reservation->start_date);
         
+            if ($start_date->subHour() <= now()) {
+                return response()->json([
+                    'message' => "Vous n'avez pas la permission de modifier votre réservation.",
+                ], 403);
+            }
+            
 
-        $reservation->update([
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,  
-            'updated_at' => now(), 
-        ]);
-    
-        return response()->json([
-            'message' => 'Votre réservation a été mise à jour avec succès.',
-        ], 200);
+            $reservation->update([
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,  
+                'updated_at' => now(), 
+            ]);
+        
+            return response()->json([
+                'message' => 'Votre réservation a été mise à jour avec succès.',
+            ], 200);
+        
     }
 
     /**
